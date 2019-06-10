@@ -87,13 +87,14 @@ public:
 };
 int main()
 {
-	Employee Ivan_Ivanovich_Ivanov, Petrov_Petr_Petrovich, Sidorov_Sidor_Sidorovich, Mikhailov_Mikhail_Mikhailovich, Aleksandrova_Aleksandra_Aleksandrovna, Evgeniyevna_Evgeniya_Evgeniyeva;
+	Department razrabotka, administratciya;
 	razrabotka.setName("Департамент разработка");
-	razrabotka.setHead(&Ivan_Ivanovich_Ivanov);
 	administratciya.setName("Департамент администрация");
-	administratciya.setHead(&Mikhailov_Mikhail_Mikhailovich);
 
-	Ivan_Ivanovich_Ivanov.setPosition("Glava Department");
+	Employee Ivan_Ivanovich_Ivanov, Petrov_Petr_Petrovich, Sidorov_Sidor_Sidorovich, Mikhailov_Mikhail_Mikhailovich, Aleksandrova_Aleksandra_Aleksandrovna, Evgeniyevna_Evgeniya_Evgeniyeva;
+	administratciya.setHead(&Mikhailov_Mikhail_Mikhailovich);
+	razrabotka.setHead(&Ivan_Ivanovich_Ivanov);
+	Ivan_Ivanovich_Ivanov.setPosition("Глава департамента");
 	Ivan_Ivanovich_Ivanov.setDepartment(&razrabotka);
 	Ivan_Ivanovich_Ivanov.setRoom(101);
 
@@ -109,18 +110,17 @@ int main()
 	Mikhailov_Mikhail_Mikhailovich.setDepartment(&administratciya);
 	Mikhailov_Mikhail_Mikhailovich.setRoom(201);
 
-	Aleksandrova_Aleksandra_Aleksandrovna.setPosition("Зам директора");
+	Aleksandrova_Aleksandra_Aleksandrovna.setPosition("Заместитель директора");
 	Aleksandrova_Aleksandra_Aleksandrovna.setDepartment(&administratciya);
 	Aleksandrova_Aleksandra_Aleksandrovna.setRoom(201);
 
-	Evgeniyevna_Evgeniya_Evgeniyeva.setPosition("Глав бух");
+	Evgeniyevna_Evgeniya_Evgeniyeva.setPosition("Главный бухгалтер");
 	Evgeniyevna_Evgeniya_Evgeniyeva.setDepartment(&administratciya);
 	Evgeniyevna_Evgeniya_Evgeniyeva.setRoom(201);
 
 	razrabotka.print();
 	administratciya.print();
 
-	getch();
-	
+	system("pause");
 	return 0;
 };
