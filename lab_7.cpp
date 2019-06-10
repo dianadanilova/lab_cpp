@@ -40,15 +40,14 @@ string mage::getname()
 
 void mage::say(string text)
 {
-	cout << this->name << "say" << text;
+	cout << this -> name << " " << "say" << " " << text;
 	return;
 }
 
 int mage::cast(spell & spl, mage & target)
 {
-	cout << this->name << "hits" << spl.name << "yeah" << target.getname() << endl;
+	cout << this->name << " " << "hits" << " " << spl.name << " " << "yeah" << " " << target.getname() << endl;
 	target.hit(spl);
-	
 	return 0;
 }
 
@@ -56,9 +55,9 @@ void mage::hit(spell & spl)
 {
 	this->hp = this->hp - spl.dhp;
 	if (hp < 0)
-	this->say("Lose");
+	this->say("Loser\n");
 		
-	return 0;
+	return;
 }
 
 int _tmain()
@@ -85,7 +84,7 @@ int _tmain()
 	Vanya.cast(cast, Boris);
 	Boris.cast(hit, Vanya);
 
-	getch();
+	system("pause");
 
 	return 0;
 }
