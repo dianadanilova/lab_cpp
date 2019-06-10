@@ -83,21 +83,21 @@ int _tmain()
 	system("pause");
 
 	reader d;	
-	d.set_name("Alexeev Alexey Alexeevich");
+	d.set_name("Vanya");
 	d.set_age(18);
 	d.book = a;
 	d.get_info();
 	system("pause");
 
 	reader e;
-	e.set_name("Vasilyeva Varvara Ivanovna");
+	e.set_name("Kolya");
 	e.set_age(35);
 	e.book = b;
 	e.get_info();
 	system("pause");
 
 	reader f;
-	f.set_name("Novgorodov Valeriy Ayaalovich");
+	f.set_name("Natasha");
 	f.set_age(18);
 	f.book = c;
 	f.get_info();
