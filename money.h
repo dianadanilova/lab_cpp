@@ -1,58 +1,80 @@
-#include "stdafx.h"
-#include "iostream"
-#include "string"
-
-using namespace std;
-
-class Money
+class money
 {
 private:
-	int Rubley;
-	unsigned char Kopeek;
-
+	long rubles;
+	unsigned char kopeyks;
 public:
-	void set(int newRubley);
-	void set(int newKopeek);
-	int getRubley();
-	unsigned char getKopeek();
-	void addMoney(Money &someMoney);
-	void withdrawMoney(Money &someMoney);
+	void setMoney(long newRubles, unsigned char newKopeyks)
+	{
+		rubles = newRubles;
+		kopeyks = newKopeyks;
+	}
+
+	long getRubles();
+	
+	unsigned char getMoneys();
+	money operator+(money & plusMoney);
+	money operator-(money & minusMoney);
+	money operator*(int mulMoneys);
+	bool operator<(money & minusMoney);
+	bool operator>(money & minusMoney);
 	void print();
 };
 
-void Money::set(int newRubley)
+
+money money::operator+(money & plusMoney)
 {
-	this->Rubley = newRubley;
+	money result;
+	result.rubles = this->rubles + plusMoney.rubles;
+	result.rubles = this->kopeyks + plusMoney.kopeyks;
+	if (result.kopeyks >= 100)
+	{
+		result.kopeyks = result.kopeyks - 100;
+		result.rubles = result.rubles + 1;
+	}
+	return result;
 }
 
-void Money::set(int newKopeek)
+money money::operator-(money & minusMoney)
 {
-	this->Kopeek = newKopeek;
+	int v;
+	money result;
+	result.rubles = this->rubles - minusMoney.rubles;
+	v = this->kopeyks - minusMoney.kopeyks;
+	if (v < 0)
+	{
+		result.rubles = result.rubles - 1;
+		result.kopeyks = v + 100;
+	}
+	else
+	{
+		result.kopeyks = v;
+	}
+	return result;
 }
 
-int Money::getRubley()
+money money::operator*(int mulMoney)
 {
-	return this->Rubley;
+	money result;
+	result.rubles = this->rubles*mulMoney;
+	result.kopeyks = this->kopeyks*mulMoney;
+	while (result.kopeyks >= 100)
+	{
+		result.kopeyks = result.kopeyks - 100;
+		result.rubles = result.rubles + 1;
+	}
+	return result;
 }
 
-unsigned char Money::getKopeek()
+bool money::operator< (money &minusMoney)
 {
-	return this->Kopeek;
+
+	if (this->rubles< minusMoney.rubles) return true;
+	else return false;
 }
 
-void Money::addMoney(Money &someMoney)
+bool money::operator > (money &minusMoney)
 {
-	this->Rubley += someMoney.Rubley;
-	this->Kopeek += someMoney.Kopeek;
-}
-
-void Money::withdrawMoney(Money &someMoney)
-{
-	this->Rubley -= someMoney.Rubley;
-	this->Kopeek -= someMoney.Kopeek;
-}
-
-void Money::print()
-{
-	cout << Rubley << "," << Kopeek << endl;
+	if (this->rubles > minusMoney.rubles) return true;
+	else return false;
 }
